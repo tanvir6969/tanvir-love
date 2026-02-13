@@ -11,28 +11,15 @@ margin:0;
 padding:0;
 font-family:Segoe UI;
 color:white;
-overflow:hidden;
 text-align:center;
+overflow:hidden;
 
-background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)),
 url("bg.jpg") no-repeat center center fixed;
 background-size:cover;
 }
 
-/* Floating Hearts */
-.heart{
-position:absolute;
-bottom:-50px;
-font-size:22px;
-animation:floatUp 8s linear infinite;
-}
-
-@keyframes floatUp{
-0%{transform:translateY(0);opacity:0;}
-50%{opacity:1;}
-100%{transform:translateY(-120vh);opacity:0;}
-}
-
+/* Main Section */
 .container{
 margin-top:70px;
 }
@@ -50,28 +37,26 @@ border-radius:25px;
 margin:10px;
 font-size:16px;
 cursor:pointer;
-transition:0.3s;
 }
-
-button:hover{transform:scale(1.1);}
 
 .yes{background:#ff007f;color:white;}
 .no{background:#555;color:white;}
 
-/* Movie Scroll Text */
-.movie-text{
-position:absolute;
-bottom:-150%;
+/* Scroll Text */
+.scroll-container{
+position:fixed;
+bottom:-100%;
 width:90%;
 left:5%;
+text-align:center;
 font-size:18px;
 line-height:1.9;
-animation:scrollUp 100s linear forwards;
+animation:scrollUp 120s linear forwards;
 }
 
 @keyframes scrollUp{
-0%{bottom:-150%;}
-100%{bottom:120%;}
+0%{bottom:-100%;}
+100%{bottom:110%;}
 }
 </style>
 </head>
@@ -100,20 +85,6 @@ function playMusic(){
 document.getElementById("bgMusic").play();
 }
 
-/* Floating Hearts */
-function createHeart(){
-const heart=document.createElement("div");
-heart.classList.add("heart");
-const emojis=["❤️","💖","💞","💘","💕","💓"];
-heart.innerHTML=emojis[Math.floor(Math.random()*emojis.length)];
-heart.style.left=Math.random()*100+"vw";
-heart.style.fontSize=(Math.random()*20+18)+"px";
-heart.style.animationDuration=(Math.random()*6+6)+"s";
-document.body.appendChild(heart);
-setTimeout(()=>{heart.remove();},9000);
-}
-setInterval(createHeart,600);
-
 /* Day Counter */
 function calculateDays(){
 const startDate = new Date("2025-09-11");
@@ -123,43 +94,37 @@ const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
 return diffDays;
 }
 
-/* Show Love Letter */
+/* Show Scroll Letter */
 function showLove(){
 
 document.getElementById("mainContent").style.display="none";
 
 const days = calculateDays();
 
-const text=document.createElement("div");
-text.className="movie-text";
+const scrollDiv=document.createElement("div");
+scrollDiv.className="scroll-container";
 
-text.innerHTML=`
-
+scrollDiv.innerHTML=`
 You are not just someone I love…<br><br>
 
 you are the most beautiful part of my existence. 💖<br><br>
 
 It has been <b>${days} days</b> since 11 September 2025,<br>
-since the day our relationship began,<br>
-and not even a single day have I understood life without you. 🥺<br><br>
+since the day our relationship began.<br>
+Not a single day have I understood life without you. 🥺<br><br>
 
 Every single day feels incomplete without you.<br><br>
 
-Waking up from sleep and not seeing your “Good Morning” text<br>
+Waking up and not seeing your “Good Morning” text<br>
 makes my heart feel empty in a way I cannot explain.<br><br>
 
-It’s like my day doesn’t truly begin until I see your name on my screen. ✨<br><br>
+It’s like my day doesn’t begin<br>
+until I see your name on my screen. ✨<br><br>
 
-And at night…<br><br>
+And at night…<br>
+I wait for your “Love you babes… Allah Hafeez.” 🌙<br><br>
 
-before closing my eyes, I wait for that one message —<br>
-“Love you babes… Allah Hafeez.” 🌙<br><br>
-
-That simple line gives me peace,<br>
-it makes my heart calm,<br>
-and it lets me sleep with a smile on my face.<br><br>
-
-Babes, you don’t even realize how much you mean to me.<br>
+That message gives me peace.<br>
 You are my comfort, my happiness,<br>
 my sweetheart, my peace of heart. 💞<br><br>
 
@@ -169,19 +134,15 @@ With you, even the darkest nights shine.<br><br>
 I miss you more than words can describe.<br>
 I want you more than anything in this world.<br><br>
 
-I don’t understand a single day without you.<br>
-And as long as I live,<br>
-I will love you the same way I loved you on the very first day. ❤️<br><br>
-
-Loving you is not a choice for me —<br>
-it is the way my heart beats.<br><br>
+As long as I live,<br>
+I will love you the same way<br>
+I loved you on the very first day. ❤️<br><br>
 
 Tanvir still miss you<br>
 and also love you soo muchh ❤️
-
 `;
 
-document.body.appendChild(text);
+document.body.appendChild(scrollDiv);
 }
 
 </script>
