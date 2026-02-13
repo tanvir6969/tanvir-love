@@ -13,7 +13,6 @@ body{
     font-family: Arial, sans-serif;
     background: linear-gradient(45deg,#ff4e8d,#ff6ec7);
     color:white;
-    overflow-x:hidden;
 }
 
 .container{
@@ -51,11 +50,6 @@ button{
     font-size:18px;
     line-height:28px;
 }
-
-iframe{
-    margin-top:20px;
-    border-radius:15px;
-}
 </style>
 </head>
 
@@ -65,7 +59,8 @@ iframe{
     <h1>Babes ✨</h1>
     <h3>Will You Stay In Tanvir's Heart Forever? 💍</h3>
 
-    <img src="babes.jpg">
+    <!-- Image -->
+    <img src="babes.jpg" alt="Babes">
 
     <div>
         <button class="yes" onclick="showLove()">Yes ❤️</button>
@@ -74,12 +69,14 @@ iframe{
 
     <div id="loveMessage" class="message"></div>
 
-    <!-- YouTube Song -->
-    <iframe width="300" height="170"
-        src="https://www.youtube.com/embed/oPSwN4yi3dc"
-        frameborder="0"
-        allowfullscreen>
-    </iframe>
+    <!-- YouTube Open Button -->
+    <br>
+    <a href="https://youtu.be/oPSwN4yi3dc" target="_blank">
+        <button style="background:black;color:white;">
+            ▶ Play Our Song
+        </button>
+    </a>
+
 </div>
 
 <script>
