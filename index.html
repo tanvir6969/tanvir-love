@@ -43,6 +43,11 @@ button{
     color:white;
 }
 
+.play-btn{
+    background:black;
+    color:white;
+}
+
 .love-text{
     margin-top:20px;
     font-size:15px;
@@ -53,8 +58,7 @@ button{
 
 <body>
 
-<!-- Background Music -->
-<audio autoplay loop>
+<audio id="bgMusic" loop>
     <source src="love.mp3" type="audio/mp3">
 </audio>
 
@@ -66,6 +70,9 @@ button{
 
     <br>
 
+    <button class="play-btn" onclick="playMusic()">▶ Play Our Song</button>
+    <br>
+
     <button class="yes" onclick="showLove()">Yes ❤️</button>
     <button class="no">No 😢</button>
 
@@ -73,6 +80,10 @@ button{
 </div>
 
 <script>
+function playMusic(){
+    document.getElementById("bgMusic").play();
+}
+
 function showLove(){
     document.getElementById("loveMsg").innerHTML =
     "You are the most beautiful part of my life. ✨<br>" +
