@@ -10,18 +10,22 @@ body{
     padding:0;
     text-align:center;
     font-family:Segoe UI;
-    background: linear-gradient(45deg,#ff4e8d,#ff7eb3);
     color:white;
+
+    background: url("bg.jpg") no-repeat center center fixed;
+    background-size: cover;
 }
 
-.container{
-    margin-top:60px;
+.overlay{
+    background: rgba(0,0,0,0.55);
+    min-height:100vh;
+    padding-top:60px;
 }
 
 img{
     width:250px;
     border-radius:20px;
-    box-shadow:0 15px 30px rgba(0,0,0,0.4);
+    box-shadow:0 15px 30px rgba(0,0,0,0.6);
 }
 
 button{
@@ -31,6 +35,11 @@ button{
     font-size:16px;
     cursor:pointer;
     margin:10px;
+    transition:0.3s;
+}
+
+button:hover{
+    transform:scale(1.1);
 }
 
 .yes{
@@ -50,8 +59,8 @@ button{
 
 .love-text{
     margin-top:20px;
-    font-size:15px;
-    line-height:1.6;
+    font-size:16px;
+    line-height:1.7;
 }
 </style>
 </head>
@@ -62,7 +71,8 @@ button{
     <source src="love.mp3" type="audio/mp3">
 </audio>
 
-<div class="container">
+<div class="overlay">
+
     <h1>Babes ✨</h1>
     <h3>Will You Stay In Tanvir's Heart Forever? 💍</h3>
 
@@ -77,6 +87,7 @@ button{
     <button class="no">No 😢</button>
 
     <div class="love-text" id="loveMsg"></div>
+
 </div>
 
 <script>
