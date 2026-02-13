@@ -41,14 +41,19 @@ cursor:pointer;
 .yes{background:#ff007f;color:white;}
 .no{background:#555;color:white;}
 
-.scroll-text{
+.countdown{
+font-size:50px;
+margin-top:150px;
+}
+
+.scroll-wrapper{
 position:fixed;
 bottom:-100%;
 width:90%;
 left:5%;
 font-size:16px;
 line-height:1.8;
-animation:scrollUp 160s linear forwards;
+animation:scrollUp 200s linear forwards;
 }
 
 @keyframes scrollUp{
@@ -71,7 +76,7 @@ animation:scrollUp 160s linear forwards;
 <img src="babes.jpg"><br>
 
 <button onclick="startMusic()">▶ Start Our Love Story</button><br>
-<button class="yes" onclick="showText()">Yes ❤️</button>
+<button class="yes" onclick="startCountdown()">Yes ❤️</button>
 <button class="no">No 😢</button>
 </div>
 
@@ -88,14 +93,34 @@ let diff = today - start;
 return Math.floor(diff / (1000*60*60*24));
 }
 
-function showText(){
+function startCountdown(){
 
 document.getElementById("main").style.display="none";
+
+let count = 5;
+let countdownDiv = document.createElement("div");
+countdownDiv.className="countdown";
+countdownDiv.innerText = count;
+document.body.appendChild(countdownDiv);
+
+let timer = setInterval(()=>{
+count--;
+countdownDiv.innerText = count;
+
+if(count<=0){
+clearInterval(timer);
+countdownDiv.remove();
+showScrollText();
+}
+},1000);
+}
+
+function showScrollText(){
 
 let days = daysTogether();
 
 let div = document.createElement("div");
-div.className="scroll-text";
+div.className="scroll-wrapper";
 
 div.innerHTML = `
 You are not just someone I love…<br><br>
@@ -103,63 +128,38 @@ You are not just someone I love…<br><br>
 You are the most beautiful part of my existence. 💖<br><br>
 
 It has been <b>${days} days</b> since 11 September 2025,<br>
-since the day our relationship began.<br>
-And not even a single day have I understood life without you. 🥺<br><br>
+since our relationship began.<br>
+Not a single day have I understood life without you. 🥺<br><br>
 
 Every single day feels incomplete without you.<br><br>
 
-Waking up from sleep and not seeing your “Good Morning” text<br>
-makes my heart feel empty in a way I cannot explain.<br><br>
+Waking up and not seeing your “Good Morning” text<br>
+makes my heart feel empty.<br><br>
 
-It’s like my day doesn’t truly begin<br>
-until I see your name on my screen. ✨<br><br>
-
-And at night…<br>
-before closing my eyes,<br>
-I wait for that one message —<br>
+And at night I wait for<br>
 “Love you babes… Allah Hafeez.” 🌙<br><br>
 
-That simple line gives me peace,<br>
-it makes my heart calm,<br>
-and it lets me sleep with a smile on my face. 💞<br><br>
-
-Babes, you don’t even realize how much you mean to me.<br>
-You are my comfort,<br>
+You are my sweetheart,<br>
+my comfort,<br>
 my happiness,<br>
-my sweetheart,<br>
-my peace of heart. ❤️<br><br>
-
-Without you, even the brightest days feel dull.<br>
-With you, even the darkest nights shine. 🌟<br><br>
+my peace of heart. 💞<br><br>
 
 I miss you more than words can describe.<br>
-I want you more than anything in this world.<br><br>
-
-I don’t understand a single day without you.<br>
-And as long as I live,<br>
+As long as I live,<br>
 I will love you the same way<br>
 I loved you on the very first day. ❤️<br><br>
 
 Love you my sweetheart… 💖<br><br>
 
 When I say that,<br>
-I say it with my whole heart,<br>
-with every single beat inside my chest. 💓<br><br>
+I say it with my whole heart. 💓<br><br>
 
 And when you softly reply,<br>
 “Love you too, pakhii 🥺💝”<br>
-my world suddenly feels complete.<br>
-My worries disappear.<br>
-My heart smiles quietly. ✨<br><br>
+my world feels complete. ✨<br><br>
 
 Then even when you say bye…<br>
-it never feels like a real goodbye to me.<br>
-Because I carry your voice,<br>
-your words,<br>
-and your love with me the whole night. 🌙💞<br><br>
-
-Loving you is not a choice for me —<br>
-it is the way my heart beats. ❤️<br><br>
+I carry your love with me all night. 🌙<br><br>
 
 Tanvir still miss you<br>
 and also love you soo muchh ❤️
