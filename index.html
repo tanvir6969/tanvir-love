@@ -15,7 +15,6 @@ color:white;
 overflow:hidden;
 }
 
-/* Start Screen */
 #startScreen{
 position:fixed;
 width:100%;
@@ -28,7 +27,6 @@ cursor:pointer;
 z-index:10;
 }
 
-/* Main Content */
 .container{
 margin-top:60px;
 display:none;
@@ -49,16 +47,8 @@ margin:15px;
 cursor:pointer;
 }
 
-.yes{
-background:#00c853;
-color:white;
-}
-
-.no{
-background:#d50000;
-color:white;
-position:relative;
-}
+.yes{background:#00c853;color:white;}
+.no{background:#d50000;color:white;position:relative;}
 
 .heart{
 position:absolute;
@@ -75,8 +65,8 @@ animation:float 6s linear infinite;
 
 <body>
 
-<!-- Hidden YouTube Player -->
-<div id="player" style="display:none;"></div>
+<!-- Hidden YouTube Iframe -->
+<div id="youtubePlayer" style="display:none;"></div>
 
 <div id="startScreen">
 Tap To Start Our Love Story 💖
@@ -98,62 +88,36 @@ Tap To Start Our Love Story 💖
 
 <script>
 
-// Load YouTube API
-var tag = document.createElement('script');
-tag.src = "https://www.youtube.com/iframe_api";
-document.body.appendChild(tag);
-
-var player;
-
-// Create YouTube Player
-function onYouTubeIframeAPIReady() {
-player = new YT.Player('player', {
-height: '0',
-width: '0',
-videoId: 'oPSwN4yi3dc',
-playerVars: { 
-'autoplay': 0,
-'controls': 0,
-'playsinline': 1
-}
-});
-}
-
-// Start Love
 document.getElementById("startScreen").addEventListener("click", function(){
-if(player){
-player.playVideo();
-}
+
+// Create YouTube iframe after user click
+document.getElementById("youtubePlayer").innerHTML =
+`<iframe width="0" height="0"
+src="https://www.youtube.com/embed/oPSwN4yi3dc?autoplay=1&loop=1&playlist=oPSwN4yi3dc"
+frameborder="0"
+allow="autoplay"
+allowfullscreen></iframe>`;
+
 this.style.display="none";
 document.getElementById("mainContent").style.display="block";
 });
 
-// Romantic Message
 function yesClicked(){
 document.body.innerHTML = `
-<div style="margin-top:15%;padding:20px;text-align:center;">
+<div style="margin-top:15%;padding:20px;">
 <h1>My Beautiful Nafisa 🥰</h1>
-
 <p style="font-size:20px;line-height:1.8;">
-
-The day you came into my life,  
+The day you came into my life,<br><br>
 everything changed in the most magical way. ✨<br><br>
-
-Your smile brightens my darkest days,  
+Your smile brightens my darkest days,<br><br>
 and your love gives my heart a home. 💖<br><br>
-
-With you, every moment feels special,  
-every dream feels possible, and every future feels perfect. 🌹<br><br>
-
-I don’t just want you for today —  
-I want you for every tomorrow. 💍❤️
-
+I want you not just for today,<br><br>
+but for every tomorrow of my life. 💍❤️
 </p>
 </div>
 `;
 }
 
-// Move No Button
 function moveButton(){
 const btn=document.querySelector(".no");
 const x=Math.random()*(window.innerWidth-100);
@@ -163,7 +127,6 @@ btn.style.left=x+"px";
 btn.style.top=y+"px";
 }
 
-// Heart Rain Animation
 setInterval(()=>{
 const heart=document.createElement("div");
 heart.className="heart";
