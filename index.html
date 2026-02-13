@@ -6,102 +6,172 @@
 
 <style>
 body{
-    margin:0;
-    padding:0;
-    text-align:center;
-    font-family:Segoe UI;
-    color:white;
-
-    background: url("bg.jpg") no-repeat center center fixed;
-    background-size: cover;
+margin:0;
+padding:0;
+background:black;
+color:white;
+font-family:Segoe UI;
+overflow:hidden;
+text-align:center;
 }
 
-.overlay{
-    background: rgba(0,0,0,0.55);
-    min-height:100vh;
-    padding-top:60px;
+/* Stars */
+.stars{
+position:fixed;
+width:100%;
+height:100%;
+background:radial-gradient(white 1px, transparent 1px);
+background-size:3px 3px;
+opacity:0.3;
+z-index:-2;
+}
+
+/* Floating Hearts */
+.heart{
+position:absolute;
+bottom:-50px;
+font-size:24px;
+animation:floatUp 8s linear infinite;
+}
+
+@keyframes floatUp{
+0%{transform:translateY(0);opacity:0;}
+50%{opacity:1;}
+100%{transform:translateY(-120vh);opacity:0;}
+}
+
+.container{
+margin-top:70px;
 }
 
 img{
-    width:250px;
-    border-radius:20px;
-    box-shadow:0 15px 30px rgba(0,0,0,0.6);
+width:240px;
+border-radius:20px;
+box-shadow:0 0 30px hotpink;
+animation:glow 2s infinite alternate;
+}
+
+@keyframes glow{
+from{box-shadow:0 0 10px pink;}
+to{box-shadow:0 0 40px deeppink;}
 }
 
 button{
-    padding:12px 25px;
-    border:none;
-    border-radius:25px;
-    font-size:16px;
-    cursor:pointer;
-    margin:10px;
-    transition:0.3s;
+padding:12px 25px;
+border:none;
+border-radius:25px;
+margin:10px;
+font-size:16px;
+cursor:pointer;
+transition:0.3s;
 }
 
-button:hover{
-    transform:scale(1.1);
+button:hover{transform:scale(1.1);}
+
+.yes{background:#ff007f;color:white;}
+.no{background:#555;color:white;}
+
+/* Movie Text */
+.movie-text{
+position:absolute;
+bottom:-120%;
+width:100%;
+font-size:20px;
+line-height:2;
+text-shadow:0 0 15px pink;
+animation:scrollUp 60s linear forwards;
 }
 
-.yes{
-    background:green;
-    color:white;
-}
-
-.no{
-    background:red;
-    color:white;
-}
-
-.play-btn{
-    background:black;
-    color:white;
-}
-
-.love-text{
-    margin-top:20px;
-    font-size:16px;
-    line-height:1.7;
+@keyframes scrollUp{
+0%{bottom:-120%;}
+100%{bottom:120%;}
 }
 </style>
 </head>
 
 <body>
 
+<div class="stars"></div>
+
 <audio id="bgMusic" loop>
-    <source src="love.mp3" type="audio/mp3">
+<source src="love.mp3" type="audio/mp3">
 </audio>
 
-<div class="overlay">
+<div class="container" id="mainContent">
+<h1>Babes 💖</h1>
+<h3>Will You Stay In Tanvir's Heart Forever? 💍</h3>
 
-    <h1>Babes ✨</h1>
-    <h3>Will You Stay In Tanvir's Heart Forever? 💍</h3>
+<img src="babes.jpg"><br>
 
-    <img src="babes.jpg">
-
-    <br>
-
-    <button class="play-btn" onclick="playMusic()">▶ Play Our Song</button>
-    <br>
-
-    <button class="yes" onclick="showLove()">Yes ❤️</button>
-    <button class="no">No 😢</button>
-
-    <div class="love-text" id="loveMsg"></div>
-
+<button onclick="playMusic()">▶ Start Our Love Story</button><br>
+<button class="yes" onclick="showLove()">Yes ❤️</button>
+<button class="no">No 😢</button>
 </div>
 
 <script>
+
+/* Fade-in Music */
 function playMusic(){
-    document.getElementById("bgMusic").play();
+const music=document.getElementById("bgMusic");
+music.volume=0;
+music.play();
+let fade=setInterval(()=>{
+if(music.volume<0.9){
+music.volume+=0.05;
+}else{
+clearInterval(fade);
+}
+},300);
 }
 
+/* Floating Love Emojis */
+function createHeart(){
+const heart=document.createElement("div");
+heart.classList.add("heart");
+const emojis=["❤️","💖","💞","💘","💕","💓"];
+heart.innerHTML=emojis[Math.floor(Math.random()*emojis.length)];
+heart.style.left=Math.random()*100+"vw";
+heart.style.fontSize=(Math.random()*25+20)+"px";
+heart.style.animationDuration=(Math.random()*6+6)+"s";
+document.body.appendChild(heart);
+setTimeout(()=>{heart.remove();},9000);
+}
+setInterval(createHeart,600);
+
+/* Movie Ending Scroll */
 function showLove(){
-    document.getElementById("loveMsg").innerHTML =
-    "You are the most beautiful part of my life. ✨<br>" +
-    "Every heartbeat of mine whispers your name.<br>" +
-    "I feel complete whenever you are beside me. 💕<br>" +
-    "My world shines brighter because of you. 🌹<br><br>" +
-    "<b>Tanvir still miss you and also love you soo muchh ❤️</b>";
+document.getElementById("mainContent").style.display="none";
+
+const text=document.createElement("div");
+text.className="movie-text";
+text.innerHTML=`
+Babes... 💖<br><br>
+
+You are not just someone I love,<br>
+you are the reason my heart beats differently. 💓<br><br>
+
+Every morning feels incomplete<br>
+without your "Good Morning" text.<br>
+My day begins only after seeing your name. ✨<br><br>
+
+And every night before I sleep,<br>
+I wait for your "Love you babes... Allah Hafeez."<br>
+That message gives me peace,<br>
+and lets me close my eyes with a smile. 🌙<br><br>
+
+Without you, my world feels empty.<br>
+Without you, my heart feels lost. 💔<br><br>
+
+I miss you more than words can describe.<br>
+I want you more than anything in this world. 💞<br><br>
+
+Tanvir still miss you<br>
+and also love you soo muchh ❤️<br><br>
+
+The End... 🎬<br>
+But Our Love Never Ends. 💖
+`;
+document.body.appendChild(text);
 }
 </script>
 
