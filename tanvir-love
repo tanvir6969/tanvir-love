@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Tanvir ❤️ Nafisa</title>
+
+<style>
+body{
+margin:0;
+padding:0;
+text-align:center;
+font-family: 'Segoe UI', sans-serif;
+background: linear-gradient(45deg,#ff4e8d,#ff6ec7);
+color:white;
+overflow:hidden;
+}
+
+.container{
+margin-top:60px;
+}
+
+img{
+width:260px;
+border-radius:20px;
+box-shadow:0 15px 30px rgba(0,0,0,0.4);
+}
+
+h1{
+font-size:28px;
+margin-bottom:10px;
+}
+
+button{
+padding:12px 30px;
+font-size:18px;
+border:none;
+border-radius:30px;
+margin:15px;
+cursor:pointer;
+transition:.3s;
+}
+
+.yes{
+background:#00c853;
+color:white;
+}
+
+.yes:hover{
+transform:scale(1.1);
+}
+
+.no{
+background:#d50000;
+color:white;
+position:relative;
+}
+
+.heart{
+position:absolute;
+font-size:20px;
+animation:float 6s linear infinite;
+}
+
+@keyframes float{
+0%{transform:translateY(100vh);opacity:1;}
+100%{transform:translateY(-10vh);opacity:0;}
+}
+
+#typing{
+font-size:20px;
+margin-top:15px;
+height:30px;
+}
+</style>
+</head>
+
+<body>
+
+<audio autoplay loop>
+<source src="song.mp3" type="audio/mpeg">
+</audio>
+
+<div class="container">
+
+<h1>Nafisa 💖</h1>
+<h2 id="typing"></h2>
+
+<img src="photo.jpg">
+
+<div>
+<button class="yes" onclick="yesClicked()">Yes ❤️</button>
+<button class="no" onmouseover="moveButton()">No 😜</button>
+</div>
+
+</div>
+
+<script>
+
+// Typing effect
+const text="Will You Be Tanvir's Valentine? 💍";
+let i=0;
+function typing(){
+if(i<text.length){
+document.getElementById("typing").innerHTML+=text.charAt(i);
+i++;
+setTimeout(typing,80);
+}
+}
+typing();
+
+function yesClicked(){
+document.body.innerHTML=`
+<div style="margin-top:20%;">
+<h1>Yayyy Nafisa! 🥰</h1>
+<h2>Tanvir Loves You Forever ❤️</h2>
+<h3>Ek Shohor Bhalobasha 🎵</h3>
+</div>
+`;
+}
+
+function moveButton(){
+const btn=document.querySelector(".no");
+const x=Math.random()*(window.innerWidth-100);
+const y=Math.random()*(window.innerHeight-50);
+btn.style.position="absolute";
+btn.style.left=x+"px";
+btn.style.top=y+"px";
+}
+
+// Heart rain
+setInterval(()=>{
+const heart=document.createElement("div");
+heart.className="heart";
+heart.innerHTML="❤️";
+heart.style.left=Math.random()*100+"vw";
+heart.style.fontSize=(Math.random()*20+15)+"px";
+document.body.appendChild(heart);
+setTimeout(()=>{heart.remove();},6000);
+},300);
+
+</script>
+
+</body>
+</html>
