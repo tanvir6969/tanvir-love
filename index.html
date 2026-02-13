@@ -9,25 +9,24 @@
 body{
 margin:0;
 padding:0;
-font-family:Segoe UI;
+font-family:Arial, sans-serif;
 color:white;
 text-align:center;
 overflow:hidden;
 
-background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)),
+background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)),
 url("bg.jpg") no-repeat center center fixed;
 background-size:cover;
 }
 
-/* Main Section */
 .container{
-margin-top:70px;
+margin-top:60px;
 }
 
 img{
-width:240px;
+width:220px;
 border-radius:20px;
-box-shadow:0 0 30px hotpink;
+box-shadow:0 0 20px hotpink;
 }
 
 button{
@@ -42,75 +41,69 @@ cursor:pointer;
 .yes{background:#ff007f;color:white;}
 .no{background:#555;color:white;}
 
-/* Scroll Text */
-.scroll-container{
+.scroll{
 position:fixed;
 bottom:-100%;
 width:90%;
 left:5%;
-text-align:center;
-font-size:18px;
-line-height:1.9;
-animation:scrollUp 120s linear forwards;
+font-size:16px;
+line-height:1.8;
+animation:moveUp 140s linear forwards;
 }
 
-@keyframes scrollUp{
+@keyframes moveUp{
 0%{bottom:-100%;}
-100%{bottom:110%;}
+100%{bottom:120%;}
 }
 </style>
 </head>
 
 <body>
 
-<audio id="bgMusic" loop>
+<audio id="music" loop>
 <source src="love.mp3" type="audio/mp3">
 </audio>
 
-<div class="container" id="mainContent">
+<div class="container" id="main">
 <h1>Babes 💖</h1>
 <h3>Will You Stay In Tanvir's Heart Forever? 💍</h3>
 
 <img src="babes.jpg"><br>
 
-<button onclick="playMusic()">▶ Start Our Love Story</button><br>
-<button class="yes" onclick="showLove()">Yes ❤️</button>
+<button onclick="startMusic()">▶ Start</button><br>
+<button class="yes" onclick="startLove()">Yes ❤️</button>
 <button class="no">No 😢</button>
 </div>
 
 <script>
 
-/* Play Music */
-function playMusic(){
-document.getElementById("bgMusic").play();
+function startMusic(){
+document.getElementById("music").play();
 }
 
-/* Day Counter */
-function calculateDays(){
-const startDate = new Date("2025-09-11");
-const today = new Date();
-const diffTime = today - startDate;
-const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
-return diffDays;
+function daysTogether(){
+let start = new Date("2025-09-11");
+let today = new Date();
+let diff = today - start;
+return Math.floor(diff / (1000*60*60*24));
 }
 
-/* Show Scroll Letter */
-function showLove(){
+function startLove(){
 
-document.getElementById("mainContent").style.display="none";
+document.getElementById("main").style.display="none";
 
-const days = calculateDays();
+let days = daysTogether();
 
-const scrollDiv=document.createElement("div");
-scrollDiv.className="scroll-container";
+let div = document.createElement("div");
+div.className="scroll";
 
-scrollDiv.innerHTML=`
+div.innerHTML = `
 You are not just someone I love…<br><br>
 
 you are the most beautiful part of my existence. 💖<br><br>
 
 It has been <b>${days} days</b> since 11 September 2025,<br>
-since the day our relationship began.<br>
+since our relationship began.<br>
 Not a single day have I understood life without you. 🥺<br><br>
 
 Every single day feels incomplete without you.<br><br>
@@ -118,15 +111,16 @@ Every single day feels incomplete without you.<br><br>
 Waking up and not seeing your “Good Morning” text<br>
 makes my heart feel empty in a way I cannot explain.<br><br>
 
-It’s like my day doesn’t begin<br>
-until I see your name on my screen. ✨<br><br>
+It’s like my day doesn’t begin until I see your name. ✨<br><br>
 
-And at night…<br>
-I wait for your “Love you babes… Allah Hafeez.” 🌙<br><br>
+And every night before sleeping,<br>
+I wait for “Love you babes… Allah Hafeez.” 🌙<br><br>
 
 That message gives me peace.<br>
-You are my comfort, my happiness,<br>
-my sweetheart, my peace of heart. 💞<br><br>
+You are my comfort,<br>
+my happiness,<br>
+my sweetheart,<br>
+my peace of heart. 💞<br><br>
 
 Without you, even the brightest days feel dull.<br>
 With you, even the darkest nights shine.<br><br>
@@ -142,7 +136,7 @@ Tanvir still miss you<br>
 and also love you soo muchh ❤️
 `;
 
-document.body.appendChild(scrollDiv);
+document.body.appendChild(div);
 }
 
 </script>
