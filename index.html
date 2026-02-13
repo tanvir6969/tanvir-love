@@ -9,13 +9,12 @@ body{
 margin:0;
 padding:0;
 text-align:center;
-font-family: 'Segoe UI', sans-serif;
-background: linear-gradient(45deg,#ff4e8d,#ff6ec7);
+font-family:'Segoe UI', sans-serif;
+background:linear-gradient(45deg,#ff4e8d,#ff6ec7);
 color:white;
 overflow:hidden;
 }
 
-/* Start Screen */
 #startScreen{
 position:fixed;
 width:100%;
@@ -23,12 +22,10 @@ height:100%;
 display:flex;
 justify-content:center;
 align-items:center;
-background: linear-gradient(45deg,#ff4e8d,#ff6ec7);
 font-size:24px;
 cursor:pointer;
 }
 
-/* Main Content */
 .container{
 margin-top:60px;
 display:none;
@@ -47,27 +44,11 @@ border:none;
 border-radius:30px;
 margin:15px;
 cursor:pointer;
-transition:.3s;
 }
 
-.yes{
-background:#00c853;
-color:white;
-}
+.yes{background:#00c853;color:white;}
+.no{background:#d50000;color:white;position:relative;}
 
-.no{
-background:#d50000;
-color:white;
-position:relative;
-}
-
-#typing{
-font-size:20px;
-margin-top:15px;
-height:30px;
-}
-
-/* Heart animation */
 .heart{
 position:absolute;
 font-size:20px;
@@ -78,29 +59,21 @@ animation:float 6s linear infinite;
 0%{transform:translateY(100vh);opacity:1;}
 100%{transform:translateY(-10vh);opacity:0;}
 }
-
-/* Fade animation */
-@keyframes fadeIn {
-from { opacity: 0; transform: translateY(20px); }
-to { opacity: 1; transform: translateY(0); }
-}
 </style>
 </head>
 
 <body>
 
-<audio id="bgMusic" loop>
-<source src="song.mp3" type="audio/mpeg">
-</audio>
+<audio id="bgMusic" src="song.mp3"></audio>
 
-<div id="startScreen" onclick="startLove()">
-Tap To Start Our Love Story 💖
+<div id="startScreen">
+Tap To Start 💖
 </div>
 
 <div class="container" id="mainContent">
 
 <h1>Nafisa 💖</h1>
-<h2 id="typing"></h2>
+<h2>Will You Be Tanvir's Valentine? 💍</h2>
 
 <img src="photo.jpg">
 
@@ -113,58 +86,30 @@ Tap To Start Our Love Story 💖
 
 <script>
 
-/* Start Love */
-function startLove(){
-document.getElementById("bgMusic").play();
-document.getElementById("startScreen").style.display="none";
+const music = document.getElementById("bgMusic");
+
+document.getElementById("startScreen").addEventListener("click", function(){
+music.play().then(()=>{
+music.loop = true;
+});
+this.style.display="none";
 document.getElementById("mainContent").style.display="block";
-typing();
-}
+});
 
-/* Typing Effect */
-const text="Will You Be Tanvir's Valentine? 💍";
-let i=0;
-function typing(){
-if(i<text.length){
-document.getElementById("typing").innerHTML+=text.charAt(i);
-i++;
-setTimeout(typing,80);
-}
-}
-
-/* Romantic Message */
 function yesClicked(){
 document.body.innerHTML = `
-<div style="
-margin-top:15%;
-text-align:center;
-padding:20px;
-animation: fadeIn 2s ease-in-out;
-">
-
-<h1 style="font-size:32px;">My Beautiful Nafisa 🥰</h1>
-
-<p style="font-size:20px; line-height:1.8; margin-top:20px;">
-
-The day you came into my life,  
-everything changed in the most magical way. ✨<br><br>
-
-Your smile brightens my darkest days,  
-and your love gives my heart a home. 💖<br><br>
-
-With you, every moment feels special,  
-every dream feels possible, and every future feels perfect. 🌹<br><br>
-
-I don’t just want you for today —  
-I want you for every tomorrow. 💍❤️
-
+<div style="margin-top:20%;padding:20px;">
+<h1>My Beautiful Nafisa 🥰</h1>
+<p style="font-size:20px;line-height:1.8;">
+The day you came into my life,<br><br>
+everything became magical and full of love. ✨<br><br>
+I want you not just for today,<br><br>
+but for every tomorrow of my life. 💍❤️
 </p>
-
 </div>
 `;
 }
 
-/* Move No Button */
 function moveButton(){
 const btn=document.querySelector(".no");
 const x=Math.random()*(window.innerWidth-100);
@@ -174,7 +119,6 @@ btn.style.left=x+"px";
 btn.style.top=y+"px";
 }
 
-/* Heart Rain */
 setInterval(()=>{
 const heart=document.createElement("div");
 heart.className="heart";
