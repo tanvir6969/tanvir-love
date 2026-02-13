@@ -42,23 +42,25 @@ cursor:pointer;
 .no{background:#555;color:white;}
 
 .countdown{
-font-size:50px;
+font-size:60px;
 margin-top:150px;
 }
 
+/* Scroll text fixed */
 .scroll-wrapper{
 position:fixed;
-bottom:-100%;
+bottom:0;
+transform:translateY(100%);
 width:90%;
 left:5%;
 font-size:16px;
 line-height:1.8;
-animation:scrollUp 200s linear forwards;
+animation:scrollUp 140s linear forwards;
 }
 
 @keyframes scrollUp{
-0%{bottom:-100%;}
-100%{bottom:120%;}
+0%{transform:translateY(100%);}
+100%{transform:translateY(-160%);}
 }
 </style>
 </head>
