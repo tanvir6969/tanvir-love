@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Tanvir ❤️ Nafisa</title>
+<title>Tanvir ❤️ Babes</title>
 
 <style>
 body{
@@ -15,6 +15,7 @@ color:white;
 overflow:hidden;
 }
 
+/* Start Screen */
 #startScreen{
 position:fixed;
 width:100%;
@@ -27,6 +28,7 @@ cursor:pointer;
 z-index:10;
 }
 
+/* Main Content */
 .container{
 margin-top:60px;
 display:none;
@@ -69,15 +71,15 @@ animation:float 6s linear infinite;
 <div id="youtubePlayer" style="display:none;"></div>
 
 <div id="startScreen">
-Tap To Start Our Love Story 💖
+Tap To Start 💖
 </div>
 
 <div class="container" id="mainContent">
 
-<h1>Nafisa 💖</h1>
-<h2>Will You Be Tanvir's Valentine? 💍</h2>
+<h1>Babes 💖</h1>
+<h2>Will You Stay In Tanvir's Heart Forever? 💍</h2>
 
-<img src="photo.jpg">
+<img src="photo.jpg?v=3">
 
 <div>
 <button class="yes" onclick="yesClicked()">Yes ❤️</button>
@@ -90,7 +92,6 @@ Tap To Start Our Love Story 💖
 
 document.getElementById("startScreen").addEventListener("click", function(){
 
-// Create YouTube iframe after user click
 document.getElementById("youtubePlayer").innerHTML =
 `<iframe width="0" height="0"
 src="https://www.youtube.com/embed/oPSwN4yi3dc?autoplay=1&loop=1&playlist=oPSwN4yi3dc"
@@ -105,14 +106,22 @@ document.getElementById("mainContent").style.display="block";
 function yesClicked(){
 document.body.innerHTML = `
 <div style="margin-top:15%;padding:20px;">
-<h1>My Beautiful Nafisa 🥰</h1>
+<h1>My Sweet Babes 🥰</h1>
+
 <p style="font-size:20px;line-height:1.8;">
-The day you came into my life,<br><br>
-everything changed in the most magical way. ✨<br><br>
-Your smile brightens my darkest days,<br><br>
-and your love gives my heart a home. 💖<br><br>
-I want you not just for today,<br><br>
-but for every tomorrow of my life. 💍❤️
+
+Even when you are far away,  
+my heart still chooses you every single day. 💖<br><br>
+
+Your memories live inside my soul,  
+and your smile still lights up my world. ✨<br><br>
+
+No matter what happens in life,  
+my feelings for you will never fade. 🌹<br><br>
+
+Tanvir still miss you  
+and also love you soo muchh ❤️
+
 </p>
 </div>
 `;
