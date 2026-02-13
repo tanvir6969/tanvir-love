@@ -2,35 +2,28 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Babes 💖</title>
 
 <style>
 body{
 margin:0;
 padding:0;
-background:black;
-color:white;
 font-family:Segoe UI;
+color:white;
 overflow:hidden;
 text-align:center;
-}
 
-/* Stars */
-.stars{
-position:fixed;
-width:100%;
-height:100%;
-background:radial-gradient(white 1px, transparent 1px);
-background-size:3px 3px;
-opacity:0.3;
-z-index:-2;
+background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+url("bg.jpg") no-repeat center center fixed;
+background-size:cover;
 }
 
 /* Floating Hearts */
 .heart{
 position:absolute;
 bottom:-50px;
-font-size:24px;
+font-size:22px;
 animation:floatUp 8s linear infinite;
 }
 
@@ -48,12 +41,6 @@ img{
 width:240px;
 border-radius:20px;
 box-shadow:0 0 30px hotpink;
-animation:glow 2s infinite alternate;
-}
-
-@keyframes glow{
-from{box-shadow:0 0 10px pink;}
-to{box-shadow:0 0 40px deeppink;}
 }
 
 button{
@@ -71,27 +58,25 @@ button:hover{transform:scale(1.1);}
 .yes{background:#ff007f;color:white;}
 .no{background:#555;color:white;}
 
-/* Movie Text */
+/* Movie Scroll Text */
 .movie-text{
 position:absolute;
-bottom:-120%;
-width:100%;
-font-size:20px;
-line-height:2;
-text-shadow:0 0 15px pink;
-animation:scrollUp 60s linear forwards;
+bottom:-150%;
+width:90%;
+left:5%;
+font-size:18px;
+line-height:1.9;
+animation:scrollUp 100s linear forwards;
 }
 
 @keyframes scrollUp{
-0%{bottom:-120%;}
+0%{bottom:-150%;}
 100%{bottom:120%;}
 }
 </style>
 </head>
 
 <body>
-
-<div class="stars"></div>
 
 <audio id="bgMusic" loop>
 <source src="love.mp3" type="audio/mp3">
@@ -110,69 +95,95 @@ animation:scrollUp 60s linear forwards;
 
 <script>
 
-/* Fade-in Music */
+/* Play Music */
 function playMusic(){
-const music=document.getElementById("bgMusic");
-music.volume=0;
-music.play();
-let fade=setInterval(()=>{
-if(music.volume<0.9){
-music.volume+=0.05;
-}else{
-clearInterval(fade);
-}
-},300);
+document.getElementById("bgMusic").play();
 }
 
-/* Floating Love Emojis */
+/* Floating Hearts */
 function createHeart(){
 const heart=document.createElement("div");
 heart.classList.add("heart");
 const emojis=["❤️","💖","💞","💘","💕","💓"];
 heart.innerHTML=emojis[Math.floor(Math.random()*emojis.length)];
 heart.style.left=Math.random()*100+"vw";
-heart.style.fontSize=(Math.random()*25+20)+"px";
+heart.style.fontSize=(Math.random()*20+18)+"px";
 heart.style.animationDuration=(Math.random()*6+6)+"s";
 document.body.appendChild(heart);
 setTimeout(()=>{heart.remove();},9000);
 }
 setInterval(createHeart,600);
 
-/* Movie Ending Scroll */
+/* Day Counter */
+function calculateDays(){
+const startDate = new Date("2025-09-11");
+const today = new Date();
+const diffTime = today - startDate;
+const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+return diffDays;
+}
+
+/* Show Love Letter */
 function showLove(){
+
 document.getElementById("mainContent").style.display="none";
+
+const days = calculateDays();
 
 const text=document.createElement("div");
 text.className="movie-text";
+
 text.innerHTML=`
-Babes... 💖<br><br>
 
-You are not just someone I love,<br>
-you are the reason my heart beats differently. 💓<br><br>
+You are not just someone I love…<br><br>
 
-Every morning feels incomplete<br>
-without your "Good Morning" text.<br>
-My day begins only after seeing your name. ✨<br><br>
+you are the most beautiful part of my existence. 💖<br><br>
 
-And every night before I sleep,<br>
-I wait for your "Love you babes... Allah Hafeez."<br>
-That message gives me peace,<br>
-and lets me close my eyes with a smile. 🌙<br><br>
+It has been <b>${days} days</b> since 11 September 2025,<br>
+since the day our relationship began,<br>
+and not even a single day have I understood life without you. 🥺<br><br>
 
-Without you, my world feels empty.<br>
-Without you, my heart feels lost. 💔<br><br>
+Every single day feels incomplete without you.<br><br>
+
+Waking up from sleep and not seeing your “Good Morning” text<br>
+makes my heart feel empty in a way I cannot explain.<br><br>
+
+It’s like my day doesn’t truly begin until I see your name on my screen. ✨<br><br>
+
+And at night…<br><br>
+
+before closing my eyes, I wait for that one message —<br>
+“Love you babes… Allah Hafeez.” 🌙<br><br>
+
+That simple line gives me peace,<br>
+it makes my heart calm,<br>
+and it lets me sleep with a smile on my face.<br><br>
+
+Babes, you don’t even realize how much you mean to me.<br>
+You are my comfort, my happiness,<br>
+my sweetheart, my peace of heart. 💞<br><br>
+
+Without you, even the brightest days feel dull.<br>
+With you, even the darkest nights shine.<br><br>
 
 I miss you more than words can describe.<br>
-I want you more than anything in this world. 💞<br><br>
+I want you more than anything in this world.<br><br>
+
+I don’t understand a single day without you.<br>
+And as long as I live,<br>
+I will love you the same way I loved you on the very first day. ❤️<br><br>
+
+Loving you is not a choice for me —<br>
+it is the way my heart beats.<br><br>
 
 Tanvir still miss you<br>
-and also love you soo muchh ❤️<br><br>
+and also love you soo muchh ❤️
 
-The End... 🎬<br>
-But Our Love Never Ends. 💖
 `;
+
 document.body.appendChild(text);
 }
+
 </script>
 
 </body>
