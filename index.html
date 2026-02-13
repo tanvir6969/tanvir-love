@@ -15,19 +15,29 @@ color:white;
 overflow:hidden;
 }
 
+/* Start Screen */
+#startScreen{
+position:fixed;
+width:100%;
+height:100%;
+display:flex;
+justify-content:center;
+align-items:center;
+background: linear-gradient(45deg,#ff4e8d,#ff6ec7);
+font-size:24px;
+cursor:pointer;
+}
+
+/* Main Content */
 .container{
 margin-top:60px;
+display:none;
 }
 
 img{
 width:260px;
 border-radius:20px;
 box-shadow:0 15px 30px rgba(0,0,0,0.4);
-}
-
-h1{
-font-size:28px;
-margin-bottom:10px;
 }
 
 button{
@@ -45,16 +55,19 @@ background:#00c853;
 color:white;
 }
 
-.yes:hover{
-transform:scale(1.1);
-}
-
 .no{
 background:#d50000;
 color:white;
 position:relative;
 }
 
+#typing{
+font-size:20px;
+margin-top:15px;
+height:30px;
+}
+
+/* Heart animation */
 .heart{
 position:absolute;
 font-size:20px;
@@ -66,21 +79,25 @@ animation:float 6s linear infinite;
 100%{transform:translateY(-10vh);opacity:0;}
 }
 
-#typing{
-font-size:20px;
-margin-top:15px;
-height:30px;
+/* Fade animation */
+@keyframes fadeIn {
+from { opacity: 0; transform: translateY(20px); }
+to { opacity: 1; transform: translateY(0); }
 }
 </style>
 </head>
 
 <body>
 
-<audio autoplay loop>
+<audio id="bgMusic" loop>
 <source src="song.mp3" type="audio/mpeg">
 </audio>
 
-<div class="container">
+<div id="startScreen" onclick="startLove()">
+Tap To Start Our Love Story 💖
+</div>
+
+<div class="container" id="mainContent">
 
 <h1>Nafisa 💖</h1>
 <h2 id="typing"></h2>
@@ -96,7 +113,15 @@ height:30px;
 
 <script>
 
-// Typing effect
+/* Start Love */
+function startLove(){
+document.getElementById("bgMusic").play();
+document.getElementById("startScreen").style.display="none";
+document.getElementById("mainContent").style.display="block";
+typing();
+}
+
+/* Typing Effect */
 const text="Will You Be Tanvir's Valentine? 💍";
 let i=0;
 function typing(){
@@ -106,18 +131,40 @@ i++;
 setTimeout(typing,80);
 }
 }
-typing();
 
+/* Romantic Message */
 function yesClicked(){
-document.body.innerHTML=`
-<div style="margin-top:20%;">
-<h1>Yayyy Nafisa! 🥰</h1>
-<h2>Tanvir Loves You Forever ❤️</h2>
-<h3>Ek Shohor Bhalobasha 🎵</h3>
+document.body.innerHTML = `
+<div style="
+margin-top:15%;
+text-align:center;
+padding:20px;
+animation: fadeIn 2s ease-in-out;
+">
+
+<h1 style="font-size:32px;">My Beautiful Nafisa 🥰</h1>
+
+<p style="font-size:20px; line-height:1.8; margin-top:20px;">
+
+The day you came into my life,  
+everything changed in the most magical way. ✨<br><br>
+
+Your smile brightens my darkest days,  
+and your love gives my heart a home. 💖<br><br>
+
+With you, every moment feels special,  
+every dream feels possible, and every future feels perfect. 🌹<br><br>
+
+I don’t just want you for today —  
+I want you for every tomorrow. 💍❤️
+
+</p>
+
 </div>
 `;
 }
 
+/* Move No Button */
 function moveButton(){
 const btn=document.querySelector(".no");
 const x=Math.random()*(window.innerWidth-100);
@@ -127,7 +174,7 @@ btn.style.left=x+"px";
 btn.style.top=y+"px";
 }
 
-// Heart rain
+/* Heart Rain */
 setInterval(()=>{
 const heart=document.createElement("div");
 heart.className="heart";
