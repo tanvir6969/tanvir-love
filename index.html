@@ -2,16 +2,15 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tanvir ❤️ Babes</title>
+<title>Babes 💖</title>
 
 <style>
 body{
     margin:0;
     padding:0;
     text-align:center;
-    font-family: Arial, sans-serif;
-    background: linear-gradient(45deg,#ff4e8d,#ff6ec7);
+    font-family:Segoe UI;
+    background: linear-gradient(45deg,#ff4e8d,#ff7eb3);
     color:white;
 }
 
@@ -22,17 +21,16 @@ body{
 img{
     width:250px;
     border-radius:20px;
-    margin:20px 0;
-    box-shadow:0 10px 30px rgba(0,0,0,0.4);
+    box-shadow:0 15px 30px rgba(0,0,0,0.4);
 }
 
 button{
-    padding:12px 30px;
-    font-size:18px;
+    padding:12px 25px;
     border:none;
-    border-radius:30px;
-    margin:15px;
+    border-radius:25px;
+    font-size:16px;
     cursor:pointer;
+    margin:10px;
 }
 
 .yes{
@@ -45,55 +43,43 @@ button{
     color:white;
 }
 
-.message{
-    margin-top:30px;
-    font-size:18px;
-    line-height:28px;
+.love-text{
+    margin-top:20px;
+    font-size:15px;
+    line-height:1.6;
 }
 </style>
 </head>
 
 <body>
 
+<!-- Background Music -->
+<audio autoplay loop>
+    <source src="love.mp3" type="audio/mp3">
+</audio>
+
 <div class="container">
     <h1>Babes ✨</h1>
     <h3>Will You Stay In Tanvir's Heart Forever? 💍</h3>
 
-    <!-- Image -->
-    <img src="babes.jpg" alt="Babes">
+    <img src="babes.jpg">
 
-    <div>
-        <button class="yes" onclick="showLove()">Yes ❤️</button>
-        <button class="no" onmouseover="moveBtn(this)">No 😜</button>
-    </div>
-
-    <div id="loveMessage" class="message"></div>
-
-    <!-- YouTube Open Button -->
     <br>
-    <a href="https://youtu.be/oPSwN4yi3dc" target="_blank">
-        <button style="background:black;color:white;">
-            ▶ Play Our Song
-        </button>
-    </a>
 
+    <button class="yes" onclick="showLove()">Yes ❤️</button>
+    <button class="no">No 😢</button>
+
+    <div class="love-text" id="loveMsg"></div>
 </div>
 
 <script>
 function showLove(){
-    document.getElementById("loveMessage").innerHTML = `
-    You are the most beautiful part of my life. 💖 <br>
-    Every heartbeat of mine whispers your name. 💕 <br>
-    I feel complete whenever you are beside me. ✨ <br>
-    My world shines brighter because of you. 🌹 <br><br>
-    <b>Tanvir still miss you and also love you soo muchh ❤️</b>
-    `;
-}
-
-function moveBtn(btn){
-    btn.style.position="absolute";
-    btn.style.top=Math.random()*400+"px";
-    btn.style.left=Math.random()*300+"px";
+    document.getElementById("loveMsg").innerHTML =
+    "You are the most beautiful part of my life. ✨<br>" +
+    "Every heartbeat of mine whispers your name.<br>" +
+    "I feel complete whenever you are beside me. 💕<br>" +
+    "My world shines brighter because of you. 🌹<br><br>" +
+    "<b>Tanvir still miss you and also love you soo muchh ❤️</b>";
 }
 </script>
 
